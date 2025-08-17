@@ -1,0 +1,498 @@
+\RequirePackage{amsmath}
+\RequirePackage{mathtools}  % Complement à Ams Math
+
+
+% Modifications de symboles
+
+\let\temp\epsilon
+\let\epsilon\varepsilon
+\let\varepsilon\temp
+
+\let\temp\phi
+\let\phi\varphi
+\let\varphi\temp
+
+\let\temp\rho
+\let\rho\varrho
+\let\varrho\temp
+
+% Logique et opérations ensemblistes
+
+\DeclareMathOperator{\et}{\text{ et }}
+\DeclareMathOperator{\ou}{\text{ ou }}
+\DeclareMathOperator{\non}{non}
+
+\newcommand{\ET}{\mathrel{\text{\underline{et}}}}
+\newcommand{\OU}{\mathrel{\text{\underline{ou}}}}
+\newcommand{\NON}{\mathrel{\text{\underline{non}}}}
+
+\newcommand{\discup}{\underset{\mathrm{disj.}}{\cup}} % Union disjointe
+
+\DeclareMathOperator{\card}{card} % Cardinal d'un ensemble
+
+% \renewcommand{\eqdef}{\mathrel{\stackrel{\text{def}}{\hbox{\equalsfill}}}} % déjà en STIX
+
+
+% Entiers
+
+%%% \nto{p}{q} : Intervalle d'entiers [[ p, q]]
+%%% \ito{n} : Intervalle d'entiers [[ 1, n]]
+%%% \oto{n} : Intervalle d'entiers [[ 0, n]]
+
+\let\llbracket\lBrack %%% Double crochet gauche pour les intervalles d'entiers.
+\let\rrbracket\rBrack %%% Double crochet droit pour les intervalles d'entiers.
+
+
+\RequirePackage{12many}
+\newOTMstyle{dblbracket}{\mathopen\llbracket #1,#2 \mathclose\rrbracket}
+
+\setOTMstyle{dblbracket}
+%\setOTMstyle{dots} % Autre style possible  {p,...,q}
+
+
+\DeclareMathOperator{\pgcd}{pgcd}
+\DeclareMathOperator{\ppcm}{ppcm}
+
+\newcommand{\divise}{\mathbin{\big|}}
+
+% Ensemble en compréhension :  
+%%% \set{...|...} (petites accolades) et \Set{...|...} (taille dynamique)
+%%% Dirac \bra{} et \ket{}
+\RequirePackage{braket} %\set \Bra \Ket \braket
+
+%%% N, Z, Q, R,  C, K et leur versions +,-, étoile
+%%% Utiliser des accolades pour les ensemble en puissance \R^{\N}
+
+\newcommand{\bb}[1]{\mathbb{#1}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\providecommand{\C}{\mathbb{C}}
+\renewcommand{\C}{\mathbb{C}}
+
+\newcommand{\Q}{\mathbb{Q}}
+%\newcommand{\U}{\mathbb{U}}   %%%% Incomp Lua
+\newcommand{\K}{\mathbb{K}} \newcommand{\kk}{\mathbb{k}}
+\newcommand{\F}{\mathbb{F}}
+
+\RequirePackage{suffix}
+\WithSuffix\newcommand\N*{\N^{\star}}
+\WithSuffix\newcommand\Z*{\Z^{\star}}
+\WithSuffix\newcommand\Q*{\Q^{\star}}
+\WithSuffix\newcommand\R*{{\R}^{\star}}
+\WithSuffix\newcommand\C*{\C^{\star}}
+\WithSuffix\newcommand\K*{\K^{\star}}
+\WithSuffix\newcommand\Q+{\Q_{+}}
+\WithSuffix\newcommand\R+{\R_{+}}
+\WithSuffix\newcommand\Q-{\Q_{-}}
+\WithSuffix\newcommand\R-{\R_{-}}
+\WithSuffix\newcommand\R>{\R*_{+}}
+\WithSuffix\newcommand\R<{\R*_{-}}
+\WithSuffix\newcommand\Q>{\Q*_{+}}
+\WithSuffix\newcommand\Q<{\Q*_{-}}
+
+
+% Ensembles usuels
+
+\newcommand{\pp}{\mathcal{P}} % \pp(E) : ensemble des parties de l'ensemble E.
+\newcommand{\classe}{\mathbf{Classe}}  % \classe(x) : Classe d'équivalence de x. Peu utilisé.
+\newcommand{\ff}{\mathscr{F}} % \ff(X,E) : ensemble des fonctions de X vers E.
+\newcommand{\app}{\mathscr{A}}% \app(X,E) : ensemble des applications de X vers E. Peu utilisé.
+
+\DeclareMathOperator{\domain}{Dom} % Domaine d'une fonction,...
+
+\newcommand{\appli}[5][t]
+{\begin{array}[#1]{rcl}	#2 &\rightarrow& #3 \\ #4 &\mapsto& #5 \end{array}}
+
+\let\fonc\appli
+
+
+\newcommand{\sol}{\mathscr{S}} % Ensemble solution
+
+\DeclareMathOperator{\id}{Id} % Identité
+\let\Id\id
+
+% Valeur absolue, partie entière
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % valeur absolue : \abs{x} ou \abs*{x} (taille adaptative)
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor} % partie entière : \floor{x} ou \floor*{x}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil} % partie entière supérieure : \ceil{x} ou \ceil*{x}
+\DeclareMathOperator{\sgn}{sgn} % Signe
+
+% Nombres complexes
+
+\DeclareMathOperator{\RE}{\mathfrak{Re}} % Déf temporaire
+\DeclareMathOperator{\IM}{\mathfrak{Im}} % Déf temporaire
+
+\renewcommand{\Re}{\RE} % Partie réelle
+\renewcommand{\Im}{\IM} % Partie imaginaire
+
+
+% Fonction exp, log
+
+\DeclareMathOperator{\e}{e} % Constante de Neper
+
+% \DeclareMathOperator{\lg}{lg} % Déjà défini, trouver autre chose
+
+% Fonction hyperboliques
+% Modification de \sinh, \cosh, \tanh pour s'adapter aux notations prépa sh, ch, th.
+
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\tanhyperbolique}{th}
+
+\let\sinh\sh
+\let\cosh\ch
+\let\originaltanh\tanh
+\let\tanh\tanhyperbolique
+
+
+\DeclareMathOperator{\cotanh}{coth}
+\DeclareMathOperator{\argch}{argch}
+\DeclareMathOperator{\argsh}{argsh}
+\DeclareMathOperator{\argth}{argth}
+\DeclareMathOperator{\argcoth}{argcoth}
+
+% Fonctions Trigonométrique supplémentaires
+
+\DeclareMathOperator{\cotan}{cotan}
+\DeclareMathOperator{\sinc}{sinc}
+
+% \DeclareMathOperator{\Arccos}{Arccos}
+% \DeclareMathOperator{\Arcsin}{Arcsin}
+% \DeclareMathOperator{\Arctan}{Arctan}
+
+\DeclareMathOperator{\arccotan}{arccotan}
+
+
+% Algèbre
+
+\newcommand{\perm}{\mathfrak{S}} % Ensemble des permutations
+
+
+\newcommand{\gr}{\mathbf{Gr}}  %% Groupe engendré
+\newcommand{\comm}{\mathbf{Comm}}  %% Comutant
+\newcommand{\alg}{\mathbf{alg}}  %% algèbre engendré ???
+
+\DeclarePairedDelimiter\gen{\langle}{\rangle} % \gen{A} : TRUC engendré par A
+
+% Algèbre linéaire et bilinéaire
+
+
+\newcommand{\mm}{\mathscr{M}} % Ensembles des matrices
+
+\let\swap\leftrightarrow % Opération élémentaire, échange
+
+\newcommand{\siml}{\mathrel{\underset{L}{\sim}}} % Équivalent par ligne
+\newcommand{\simc}{\mathrel{\underset{C}{\sim}}} % Équivalent par colonne
+
+% \RequirePackage{mathtools} \sideset est réservé au opérateur type \sum
+% \newcommand{\transp}[1]{\prescript{\mathrm t}{}{#1}}
+\newcommand{\transp}[1]{{#1}^{T}} % Transposée
+
+
+\newcommand{\gros}[1]{\mathclap{\mbox{\LARGE $\bm #1$}}} % Pour faire un gros zéro : \gros{0}
+
+\DeclareMathOperator{\com}{Com} % Comatrice
+
+\newcommand{\lin}{\mathcal{L}} % Applications linéaires
+\newcommand{\linc}{\mathcal{L}_c} % Applications linéaires continues.
+
+\newcommand{\gl}{\mathbf{GL}} % Groupe linéaire
+\let\M\mm % Olivier
+
+\DeclareMathOperator{\vect}{Vect}
+%\DeclareMathOperator{\ker}{Ker}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\spec}{Spec}
+
+\DeclareMathOperator{\rg}{rg}
+
+\DeclareMathOperator{\spectre}{Sp}
+
+
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\mat}{Mat}
+\DeclareMathOperator{\pass}{Pass}
+\DeclareMathOperator{\coord}{Coord}
+
+
+\providecommand{\operp}{\overset{\perp}{\oplus}} % Somme directe orthogonale
+
+
+\newcommand{\sym}{\mathscr{S}} % ___ symétrique
+\newcommand{\asym}{\mathscr{A}} % __ antisymétrique
+
+\newcommand{\aut}{\mathbf{Aut}} % Automorphismes
+\newcommand{\isom}{\mathbf{Isom}} % Isométrie ?
+\WithSuffix\newcommand\isom+{\isom^{+}}
+\WithSuffix\newcommand\isom-{\isom^{-}}
+
+
+\newcommand{\oo}{\mathbf{O}} % Groupe orthogonal
+%\WithSuffix\newcommand\oo+{\oo^{+}} \newcommand\altso{\mathbf{SO}}
+\WithSuffix\newcommand\oo+{\mathbf{SO}} \newcommand\altso{\oo^{+}}
+\WithSuffix\newcommand\oo-{\oo^{-}}
+
+\newcommand{\so}{{\oo+}}
+
+\DeclareMathOperator{\Det}{Det} % Produit mixte / Déterminant en base orthonormée
+
+% Analyse
+
+
+%%% Limites
+\newcommand{\tor}{\underset{>}{\to}}
+\newcommand{\tol}{\underset{<}{\to}}
+\newcommand{\toneq}{\underset{\neq}{\to}}
+%\newcommand{\xto}[1]{\xrightarrow[#1]{}}
+%\newcommand\xto{\mathop{\longrightarrow}\limits}
+\newcommand\xlim{\mathop{\longrightarrow}\limits}
+
+\let\xto\xrightarrow
+
+
+\newcommand{\cont}{\mathscr{C}}
+\newcommand{\deriv}{\mathscr{D}}
+\newcommand{\class}{\mathscr{C}}
+\let\CC\class
+
+
+\newcommand{\CD}{\mathscr{D}} %%% Fourier continue + f(0+)+f(0-)=2f(0)...
+\newcommand{\cm}{\mathscr{C}\!_m}
+\newcommand{\etag}{\mathscr{E}} %%% ????
+\newcommand{\esca}{\mathscr{E}} %%% ????
+
+
+% Voir package esdiff, avec d'autre truc sympa
+\let\subdot\d
+
+\def\dd{\,\mathrm{d}}
+\def\d{\,\mathrm{d}}
+
+
+\DeclareMathOperator{\Diff}{D}
+\def\D{\Diff}
+\DeclareMathOperator{\jac}{Jac}
+
+\DeclareMathOperator{\grad}{grad}
+
+
+% Topologie
+
+\newcommand{\vois}{\mathscr{V}} % Ensembles des voisinages
+\DeclarePairedDelimiter\norm{\lVert}{\rVert} % \norm{x} ou \norm*{x}
+
+
+
+\def\mathring#1{\overset{\circ}{#1}}
+%\let\widering\mathring
+\NewDocumentCommand\interior{sm}
+  {\IfBooleanTF{#1}{\mathring{\overparen{#2}}}{\mathring{#2}}{}}
+
+
+%% Déjà défini ???
+% \NewDocumentCommand\closure{sm}
+  % {\IfBooleanTF{#1}{\overline{#2}}{\bar{#2}}}
+
+
+
+\DeclarePairedDelimiter\normop{\Vvert}{\Vvert} % Norme d'opérateur
+
+
+
+
+\DeclareMathOperator*{\hocolim}{hocolim}
+\DeclareMathOperator*{\holim}{holim}
+\DeclareMathOperator*{\colim}{colim}
+\DeclareMathOperator{\prim}{Prim}
+\DeclareMathOperator{\mor}{Mor}
+\DeclareMathOperator{\ob}{Ob}
+
+\newcommand\he{{\,\simeq\,}} % Homotopy equivalent
+
+% Géométrie
+
+
+\DeclarePairedDelimiterX\PS[2]{\langle}{\rangle}{#1,#2} % Produit scalaire
+
+\DeclareMathOperator{\longueur}{\bm{\ell}}
+\DeclareMathOperator{\aire}{\mathcal{A}}
+
+\newcommand{\mes}[2]{\widehat{\left(#1,#2\right)}} % Mesure d'angle
+
+\RequirePackage{esvect}
+\newcommand{\vvi}{\vv\imath}
+\newcommand{\vvj}{\vv\jmath}
+\newcommand{\vvk}{\vv{k}}
+
+
+% Probabilités
+
+\DeclareMathOperator{\cov}{Cov} % Covariance
+
+\let\indep\Vbar % Varialbes aléatoires indépendantes
+
+
+
+
+%%%%%%%%% À trier / À virer%%%%%%%%%%%
+
+
+
+\newcommand{\II}{\mathscr{I}} %%%% ????
+
+
+\def\widearc#1{\overset{\;\rotatebox{90}{)}}{#1}}
+
+
+
+
+
+\let\pd\partial % derivee partielle
+\newcommand{\PD}[2]{\ensuremath{{\frac{\partial#1}{\partial#2}}}}%part. deriv.
+
+
+
+\newcommand{\from}{\leftarrow}
+\let\xfrom\xleftarrow
+
+
+\newcommand{\widebar}{\overline}
+%\renewcommand{\tilde}{\widetilde}
+
+
+
+% origin : Voss math mode PDF
+\def\itemMath#1{%
+\raisebox{-\abovedisplayshortskip}{%
+\parbox{\linewidth}{%0.75\linewidth ORIGINAL
+\begin{equation}#1\end{equation}}}}
+
+
+
+
+
+% Abréviations pour les familles
+
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\fA}{\mathfrak{A}}
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\fC}{\mathfrak{C}}
+\newcommand{\fD}{\mathfrak{D}}
+\newcommand{\fE}{\mathfrak{E}}
+\newcommand{\fF}{\mathfrak{F}}
+\newcommand{\fG}{\mathfrak{G}}
+\newcommand{\fH}{\mathfrak{H}}
+\newcommand{\fI}{\mathfrak{I}}
+\newcommand{\fJ}{\mathfrak{J}}
+\newcommand{\fK}{\mathfrak{K}}
+\newcommand{\fL}{\mathfrak{L}}
+\newcommand{\fM}{\mathfrak{M}}
+\newcommand{\fN}{\mathfrak{N}}
+\newcommand{\fO}{\mathfrak{O}}
+\newcommand{\fP}{\mathfrak{P}}
+\newcommand{\fQ}{\mathfrak{Q}}
+\newcommand{\fR}{\mathfrak{R}}
+\newcommand{\fS}{\mathfrak{S}}
+\newcommand{\fT}{\mathfrak{T}}
+\newcommand{\fU}{\mathfrak{U}}
+\newcommand{\fV}{\mathfrak{V}}
+\newcommand{\fW}{\mathfrak{W}}
+\newcommand{\fX}{\mathfrak{X}}
+\newcommand{\fY}{\mathfrak{Y}}
+\newcommand{\fZ}{\mathfrak{Z}}
+
+\newcommand{\sA}{\mathscr{A}}
+\newcommand{\sB}{\mathscr{B}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\sD}{\mathscr{D}}
+\newcommand{\sE}{\mathscr{E}}
+\newcommand{\sF}{\mathscr{F}}
+\newcommand{\sG}{\mathscr{G}}
+\newcommand{\sH}{\mathscr{H}}
+\newcommand{\sI}{\mathscr{I}}
+\newcommand{\sJ}{\mathscr{J}}
+\newcommand{\sK}{\mathscr{K}}
+\newcommand{\sL}{\mathscr{L}}
+\newcommand{\sM}{\mathscr{M}}
+\newcommand{\sN}{\mathscr{N}}
+\newcommand{\sO}{\mathscr{O}}
+\newcommand{\sP}{\mathscr{P}}
+\newcommand{\sQ}{\mathscr{Q}}
+\newcommand{\sR}{\mathscr{R}}
+\newcommand{\sS}{\mathscr{S}}
+\newcommand{\sT}{\mathscr{T}}
+\newcommand{\sU}{\mathscr{U}}
+\newcommand{\sV}{\mathscr{V}}
+\newcommand{\sW}{\mathscr{W}}
+\newcommand{\sX}{\mathscr{X}}
+\newcommand{\sY}{\mathscr{Y}}
+\newcommand{\sZ}{\mathscr{Z}}
+
+
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bI}{\mathbf{I}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bK}{\mathbf{K}}
+\newcommand{\bL}{\mathbf{L}}
+\newcommand{\bM}{\mathbf{M}}
+\newcommand{\bN}{\mathbf{N}}
+\newcommand{\bO}{\mathbf{O}}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bQ}{\mathbf{Q}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bT}{\mathbf{T}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bZ}{\mathbf{Z}}
+
+
+
+
+
+
+
+
+
